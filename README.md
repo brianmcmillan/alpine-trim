@@ -12,6 +12,9 @@ Best Practices - http://docs.docker.com/articles/dockerfile_best-practices/
 		edit the dockerfile
 		docker run
 		`docker build --force-rm=false -t brianmcmillan01/alpine-trim:0.0.5 .`
+		or
+		`docker build --force-rm=false --no-cache=true -t brianmcmillan01/alpine-trim:0.0.5 .`
+		Run with:
 		`docker run -ti --name=alpine-trim-0.0.5 brianmcmillan01/alpine-trim:0.0.5`
 
 ##TO DO
@@ -23,15 +26,18 @@ Best Practices - http://docs.docker.com/articles/dockerfile_best-practices/
 		docker build ENV  
 [ ] Document House keeping  
 		docker history  
-		docker rmi  
+		docker rmi  	
 
 ----
 
 ##Notes and links
-https://developer.atlassian.com/blog/2015/08/minimal-java-docker-containers/
-http://wiki.alpinelinux.org/wiki/Setting_up_a_ssh-server
-http://southworks.com/blog/2015/07/17/docker-compose-scaling-multi-container-applications/
-https://medium.com/@rdsubhas/docker-for-development-common-problems-and-solutions-95b25cae41eb#.nab5yx5kc
-https://www.phusionpassenger.com/library/walkthroughs/deploy/nodejs/ownserver/nginx/oss/trusty/deploy_app.html
-http://mrbluecoat.blogspot.com/2014/10/docker-traps-and-how-to-avoid-them.html
-https://opensource.com/business/14/9/security-for-docker
+https://developer.atlassian.com/blog/2015/08/minimal-java-docker-containers/  
+http://wiki.alpinelinux.org/wiki/Setting_up_a_ssh-server  
+http://southworks.com/blog/2015/07/17/docker-compose-scaling-multi-container-applications/  
+https://medium.com/@rdsubhas/docker-for-development-common-problems-and-solutions-95b25cae41eb#.nab5yx5kc  
+https://www.phusionpassenger.com/library/walkthroughs/deploy/nodejs/ownserver/nginx/oss/trusty/deploy_app.html  
+http://mrbluecoat.blogspot.com/2014/10/docker-traps-and-how-to-avoid-them.html  
+https://opensource.com/business/14/9/security-for-docker  
+
+
+http://handyjs.org/article/the-kick-ass-guide-to-deploying-nodejs-web-apps-in-production  

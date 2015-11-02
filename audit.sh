@@ -6,10 +6,12 @@
 ###############################################
 
 # Setup the file
-now=$(date +"%Y-%m-%dT%H:%M:%S.%N%:z")
-file=/usr/local/audit/sysaudit_$now.txt
+# now=$(date +"%Y-%m-%dT%H:%M:%S.%N%:z")
+now=$(date +"%Y-%m-%dT%H:%M:%S")
+file=/opt/audit/sysaudit_$now.txt
 #mkdir /usr/local/audit/ -p
 
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
 echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
 echo $now >> $file
 whoami >> $file
@@ -47,37 +49,36 @@ echo "---------------------------------" >> $file
 echo "hostname: " >> $file
 cat /etc/hostname >> $file
 
-echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
-echo "USERS AND GROUPS #######################" >> $file
-echo "## /etc/passwd #######################" >> $file
+echo "@@ USERS AND GROUPS @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
+echo "## /etc/passwd #################################" >> $file
 cat /etc/passwd | sort >> $file
-echo "## etc/group #######################" >> $file
+echo "## etc/group ###################################" >> $file
 cat /etc/group | sort >> $file
 
-echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
-echo "SYSTEM SOFTWARE #######################" >> $file
-echo "## shells #######################" >> $file
+echo "@@ SYSTEM SOFTWARE @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
+echo "## shells ######################################" >> $file
 cat /etc/shells >> $file
-echo "## /bin #######################" >> $file
+echo "## /bin - essential user binaries ##############" >> $file
 ls -l /bin >> $file
-echo "## /sbin #######################" >> $file
+echo "## /sbin - sys binaries ########################" >> $file
 ls -l /sbin >> $file
-echo "## /usr/bin #######################" >> $file
+echo "## /usr/bin - user commands ####################" >> $file
 ls -l /usr/bin >> $file
-echo "## /usr/sbin #######################" >> $file
+echo "## /usr/sbin - non-essential user binaries #####" >> $file
 ls -l /usr/sbin >> $file
-echo "APK PACKAGES #######################" >> $file
+echo "APK PACKAGES ###################################" >> $file
 apk -vv info|sort >> $file
 
-echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
-echo "APPLICATION CODE #######################" >> $file
-echo "/tmp #######################" >> $file
-ls -lR /tmp >> $file
-echo "/var/www #######################" >> $file
-ls -lR /var/www >> $file
-echo "/var/node #######################" >> $file
-ls -lR /var/node >> $file
-echo "/var/app #######################" >> $file
-ls -lR /var/app >> $file
+echo "@@ SYSTEM SERVICES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
+echo "## rc-service ######################################" >> $file
+rc-service -l >> $file
 
-echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
+echo "@@ APPLICATION CODE @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
+echo "/tmp #######################" >> $file
+ls -R /tmp >> $file
+echo "/var #######################" >> $file
+ls -R /var >> $file
+echo "/srv #######################" >> $file
+ls -R /srv >> $file
+
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" >> $file
